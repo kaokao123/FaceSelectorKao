@@ -45,7 +45,7 @@ public class FaceSelectorKao {
         System.out.println("Start Training...");
         selecotor.trainWith(imgs, indices, labels);
         System.out.println("Training done!! :)");
-        List<FavoriteFaceSelector.ClassificationResult> results = selecotor.getSortedFavorites(imgs);
+        List<FavoriteFaceSelector.ClassificationResult> results = selecotor.getSortedFavorites(imgs, 6);
         int numResults = results.size();
         for (int i=0; i<numResults; i++) {
             FavoriteFaceSelector.ClassificationResult result = results.get(i);

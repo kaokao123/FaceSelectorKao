@@ -57,8 +57,8 @@ class FavoriteFaceSelector {
         return new ClassificationResult(label, score);
     }
 
-    public List<ClassificationResult> getSortedFavorites(AnImage []imgs) {
-        List<ClassificationResult> ans = new ArrayList<ClassificationResult>();
+    public List<ClassificationResult> getSortedFavorites(AnImage []imgs, int num) {
+        ArrayList<ClassificationResult> ans = new ArrayList<ClassificationResult>();
         int len = imgs.length;
         for (int i=0; i<len; i++) {
             ClassificationResult result = classify(imgs[i]);
@@ -69,6 +69,10 @@ class FavoriteFaceSelector {
             ans.add(result);
         }
         Collections.sort(ans, Collections.<ClassificationResult>reverseOrder());
+
+        for (int i=ans.size()-1; i>=num && num>=0; i--) {
+            ans.remove(i);
+        }
         return ans;
     }
 }
